@@ -62,6 +62,14 @@ flutter:
   assets:
     - assets/images/
     - assets/images/Art_Home.png
+    - assets/images/Music_Home.png
+    - assets/images/Virtual Worlds.png
+    - assets/images/trending1.png
+    - assets/images/trending2.png
+    - assets/images/trending3.png
+    - assets/images/topSeller1.png
+    - assets/images/topSeller2.png
+    - assets/images/topSeller3.png
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see
