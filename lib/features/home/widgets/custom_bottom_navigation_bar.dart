@@ -2,16 +2,23 @@ import 'dart:ui';
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:mini_nft_marketplace/core/resources/route_manager.dart';
 
 import '../../../core/resources/color_manager.dart';
 import '../../../core/resources/size_manager.dart';
 
 class CustomBottomNavigationBar extends StatelessWidget {
-  const CustomBottomNavigationBar({super.key});
-
+  const CustomBottomNavigationBar(
+      {super.key,
+      required this.onPressedstats,
+      required this.widthScreen,
+      required this.onPressehome});
+  final VoidCallback onPressedstats;
+  final VoidCallback onPressehome;
+  final double widthScreen;
   @override
   Widget build(BuildContext context) {
-   final double widthScreen = MediaQuery.of(context).size.width;
+    // widthScreen = MediaQuery.of(context).size.width;
     return SizedBox(
       height: HeightValue.h122,
       child: Stack(
@@ -37,16 +44,21 @@ class CustomBottomNavigationBar extends StatelessWidget {
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                       children: [
-                        Icon(
-                          Icons.home,
-                          size: SizeValue.sv39,
-                          color: Colors.white,
+                        IconButton(
+                          onPressed: onPressehome,
+                          icon: Icon(
+                            Icons.home,
+                            size: SizeValue.sv39,
+                            color: Colors.white,
+                          ),
                         ),
-                        Icon(
-                          Icons.stacked_bar_chart,
-                          size: SizeValue.sv39,
-                          color: Colors.white,
-                        ),
+                        IconButton(
+                            icon: Icon(
+                              Icons.stacked_bar_chart,
+                              size: SizeValue.sv39,
+                              color: Colors.white,
+                            ),
+                            onPressed: onPressedstats),
                         Container(
                           width: 39,
                         ),

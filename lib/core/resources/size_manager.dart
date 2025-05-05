@@ -23,8 +23,10 @@ class BlurValue {
 }
 
 class WidthValue {
+  static const double w0_7 = .7;
   static const double w10 = 10;
   static const double w28_83 = 28.83;
+  static const double w106 = 106;
   static const double w157 = 157;
   static const double w198_2 = 198.2;
   static const double w252_26 = 252.26;
@@ -37,9 +39,11 @@ class RadiusValue {
 }
 
 class PaddingValue {
+  static const double p8 = 8;
   static const double p9 = 9;
   static const double p10 = 10;
   static const double p14 = 14;
+  static const double p16 = 16;
   static const double p25 = 25;
   static const double p100 = 100;
 }

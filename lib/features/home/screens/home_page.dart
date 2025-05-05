@@ -8,11 +8,13 @@ import 'package:mini_nft_marketplace/core/resources/constants.dart';
 import 'package:mini_nft_marketplace/core/resources/font_manager.dart';
 import 'package:mini_nft_marketplace/core/resources/size_manager.dart';
 import 'package:mini_nft_marketplace/core/resources/strings_manager.dart';
+import 'package:mini_nft_marketplace/features/home/screens/home.dart';
 import 'package:mini_nft_marketplace/features/home/widgets/custom_bottom_navigation_bar.dart';
 import 'package:mini_nft_marketplace/features/home/widgets/custom_card_top_seller.dart';
 import 'package:mini_nft_marketplace/features/home/widgets/custom_subTitle.dart';
 import 'package:mini_nft_marketplace/features/home/widgets/custom_title_home_page.dart';
 import 'package:mini_nft_marketplace/features/home/widgets/custom_trending_card_collection.dart';
+import 'package:mini_nft_marketplace/features/stats/screens/stats.dart';
 import 'package:mini_nft_marketplace/models/collections_model.dart';
 
 import '../../../core/resources/route_manager.dart';
@@ -27,104 +29,48 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   int index = 0;
-
+  List<Widget> w = [Home(), Stats()];
   @override
   Widget build(BuildContext context) {
+    double widthScreen = MediaQuery.of(context).size.width;
     return Scaffold(
       backgroundColor: ColorManager.kColorPrimary,
-      appBar: AppBar(
-        centerTitle: true,
-        title: Text(StringsManager.titleHomepage),
-        backgroundColor: Colors.transparent,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 16.0, vertical: 8.0),
-        child: ListView(
-          children: [
-            SizedBox(
-              height: HeightValue.h167_57,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (context, index) => CustomCategoryHomePage(
-                  title: Constants.categoryList[index].title,
-                  image: Constants.categoryList[index].image,
+      appBar: index == 0
+          ? AppBar(
+              centerTitle: true,
+              title: Text(StringsManager.titleHomepage),
+              backgroundColor: Colors.transparent,
+            )
+          : index == 1
+              ? AppBar(
+                  centerTitle: true,
+                  actions: [
+                    Padding(
+                        padding:
+                            EdgeInsetsDirectional.only(end: PaddingValue.p14),
+                        child: Icon(Icons.more_horiz_outlined))
+                  ],
+                  title: Text(StringsManager.StatsTitle),
+                  backgroundColor: Colors.transparent,
+                )
+              : AppBar(
+                  title: Text("null"),
                 ),
-                separatorBuilder: (context, int) => SizedBox(
-                  width: WidthValue.w10,
-                ),
-                itemCount: Constants.categoryList.length,
-              ),
-            ),
-            SizedBox(
-              height: HeightValue.h27,
-            ),
-            CustomSubtitle(
-              title: StringsManager.trendingCollectionHomepage,
-            ),
-            SizedBox(
-              height: 7,
-            ),
-            SizedBox(
-              height: HeightValue.h194,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemBuilder: (BuildContext context, int index) =>
-                    CustomTrendingCollection(
-                        collectionModel: Constants.collectionLists[index]),
-                separatorBuilder: (BuildContext context, int index) =>
-                    SizedBox(width: WidthValue.w28_83),
-                itemCount: Constants.collectionLists.length,
-              ),
-            ),
-            SizedBox(
-              height: HeightValue.h27,
-            ),
-            CustomSubtitle(
-              title: StringsManager.topSellerCollectionHomepage1,
-            ),
-            SizedBox(
-              height: HeightValue.h6,
-            ),
-            SizedBox(
-              height: HeightValue.h236,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (BuildContext context, int index) => SizedBox(
-                  width: WidthValue.w28_83,
-                ),
-                itemCount: Constants.topSellerList.length,
-                itemBuilder: (BuildContext context, int index) =>
-                    CustomCardTopSeller(
-                        topSellermodel: Constants.topSellerList[index]),
-              ),
-            ),
-            SizedBox(
-              height: HeightValue.h27,
-            ),
-            CustomSubtitle(
-              title: StringsManager.topSellerCollectionHomepage1,
-            ),
-            SizedBox(
-              height: HeightValue.h6,
-            ),
-            SizedBox(
-              height: HeightValue.h236,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                separatorBuilder: (BuildContext context, int index) => SizedBox(
-                  width: WidthValue.w28_83,
-                ),
-                itemCount: Constants.topSellerList.length,
-                itemBuilder: (BuildContext context, int index) =>
-                    CustomCardTopSeller(
-                        topSellermodel: Constants.topSellerList[index]),
-              ),
-            ),
-          ],
-        ),
-      ),
+      body: w[index],
       extendBody: true,
-      bottomNavigationBar: CustomBottomNavigationBar(),
+      bottomNavigationBar: CustomBottomNavigationBar(
+        onPressedstats: () {
+          setState(() {
+            index = 1;
+          });
+        },
+        widthScreen: widthScreen,
+        onPressehome: () {
+          setState(() {
+            index = 0;
+          });
+        },
+      ),
     );
   }
 }
