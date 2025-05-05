@@ -32,9 +32,13 @@ final CollectionModel  collectionModel;
             child: Column(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
-                Image(
-                  image: AssetImage(collectionModel.image),
-                  height: HeightValue.h139,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(19),
+                  child: Image(
+                    fit: BoxFit.cover,
+                    image: AssetImage(collectionModel.image),
+                    height: HeightValue.h139,
+                  ),
                 ),
                 SizedBox(
                   height: HeightValue.h9,

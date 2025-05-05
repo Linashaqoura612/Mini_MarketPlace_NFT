@@ -6,6 +6,8 @@ class HeightValue {
   static const double h27 = 27;
   static const double h45_06 = 45.06;
   static const double h70 = 70;
+  static const double h90 = 90;
+  static const double h122 = 122;
   static const double h139 = 139;
   static const double h167_57 = 167.57;
   static const double h191 = 191;
@@ -41,6 +43,11 @@ class PaddingValue {
   static const double p25 = 25;
   static const double p100 = 100;
 }
-class PositionedValue{
-  static const double po=0;
+
+class PositionedValue {
+  static const double po = 0;
+}
+
+class SizeValue {
+  static const double sv39 = 39;
 }

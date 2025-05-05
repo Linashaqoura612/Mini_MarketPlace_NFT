@@ -8,6 +8,7 @@ import 'package:mini_nft_marketplace/core/resources/constants.dart';
 import 'package:mini_nft_marketplace/core/resources/font_manager.dart';
 import 'package:mini_nft_marketplace/core/resources/size_manager.dart';
 import 'package:mini_nft_marketplace/core/resources/strings_manager.dart';
+import 'package:mini_nft_marketplace/features/home/widgets/custom_bottom_navigation_bar.dart';
 import 'package:mini_nft_marketplace/features/home/widgets/custom_card_top_seller.dart';
 import 'package:mini_nft_marketplace/features/home/widgets/custom_subTitle.dart';
 import 'package:mini_nft_marketplace/features/home/widgets/custom_title_home_page.dart';
@@ -17,8 +18,15 @@ import 'package:mini_nft_marketplace/models/collections_model.dart';
 import '../../../core/resources/route_manager.dart';
 import '../widgets/custom_category_home_page.dart';
 
-class HomePage extends StatelessWidget {
-  const HomePage({super.key});
+class HomePage extends StatefulWidget {
+  HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  int index = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -90,9 +98,33 @@ class HomePage extends StatelessWidget {
                         topSellermodel: Constants.topSellerList[index]),
               ),
             ),
+            SizedBox(
+              height: HeightValue.h27,
+            ),
+            CustomSubtitle(
+              title: StringsManager.topSellerCollectionHomepage1,
+            ),
+            SizedBox(
+              height: HeightValue.h6,
+            ),
+            SizedBox(
+              height: HeightValue.h236,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                separatorBuilder: (BuildContext context, int index) => SizedBox(
+                  width: WidthValue.w28_83,
+                ),
+                itemCount: Constants.topSellerList.length,
+                itemBuilder: (BuildContext context, int index) =>
+                    CustomCardTopSeller(
+                        topSellermodel: Constants.topSellerList[index]),
+              ),
+            ),
           ],
         ),
       ),
+      extendBody: true,
+      bottomNavigationBar: CustomBottomNavigationBar(),
     );
   }
 }

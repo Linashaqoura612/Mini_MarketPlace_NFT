@@ -11,7 +11,7 @@ import '../../../core/resources/size_manager.dart';
 
 class CustomCardTopSeller extends StatelessWidget {
   const CustomCardTopSeller({super.key, required this.topSellermodel});
-final TopSellerModel topSellermodel;
+  final TopSellerModel topSellermodel;
   @override
   Widget build(BuildContext context) {
     return UnconstrainedBox(
@@ -19,8 +19,8 @@ final TopSellerModel topSellermodel;
       child: ClipRRect(
         borderRadius: BorderRadius.circular(20),
         child: BackdropFilter(
-          filter: ImageFilter.blur(
-              sigmaX: BlurValue.b10, sigmaY: BlurValue.b10),
+          filter:
+              ImageFilter.blur(sigmaX: BlurValue.b10, sigmaY: BlurValue.b10),
           child: Container(
             alignment: Alignment.center,
             padding: EdgeInsetsDirectional.all(PaddingValue.p9),
@@ -31,10 +31,13 @@ final TopSellerModel topSellermodel;
               mainAxisAlignment: MainAxisAlignment.start,
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Image(
-                  image:
-                  AssetImage(topSellermodel.image),
-                  height: HeightValue.h139,
+                ClipRRect(
+                  borderRadius: BorderRadius.circular(19),
+                  child: Image(
+                    fit: BoxFit.cover,
+                    image: AssetImage(topSellermodel.image),
+                    height: HeightValue.h139,
+                  ),
                 ),
                 SizedBox(
                   height: HeightValue.h9,
@@ -74,10 +77,13 @@ final TopSellerModel topSellermodel;
                       children: [
                         Icon(
                           CupertinoIcons.heart,
-
-                          color:topSellermodel.activeLike? Colors.red: Colors.grey,
+                          color: topSellermodel.activeLike
+                              ? Colors.red
+                              : Colors.grey,
                         ),
-                        Text(topSellermodel.count2.toString(),),
+                        Text(
+                          topSellermodel.count2.toString(),
+                        ),
                       ],
                     ),
                   ],
