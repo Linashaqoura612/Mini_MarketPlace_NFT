@@ -12,7 +12,6 @@ class CustomTitleStatePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-
       // padding: EdgeInsetsDirectional.only(bottom: PaddingValue.p16),
       decoration: BoxDecoration(
         border: Border(
@@ -23,9 +22,19 @@ class CustomTitleStatePage extends StatelessWidget {
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
-          ActiveSubTitleStatePage(active: true, title:StringsManager.ranking, icon: Icons.query_stats,),SizedBox(width: WidthValue.w40,),
-          ActiveSubTitleStatePage(active: false, title: StringsManager.activity, icon:Icons.stacked_bar_chart_sharp ,),
-
+          ActiveSubTitleStatePage(
+            active: true,
+            title: StringsManager.ranking,
+            icon: Icons.query_stats,
+          ),
+          SizedBox(
+            width: WidthValue.w20,
+          ),
+          ActiveSubTitleStatePage(
+            active: false,
+            title: StringsManager.activity,
+            icon: Icons.stacked_bar_chart_sharp,
+          ),
         ],
       ),
     );

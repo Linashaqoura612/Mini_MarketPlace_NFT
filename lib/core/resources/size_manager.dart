@@ -5,6 +5,7 @@ class HeightValue {
   static const double h12_61 = 12.61;
   static const double h20 = 20;
   static const double h27 = 27;
+  static const double h39 = 39;
   static const double h45_06 = 45.06;
   static const double h70 = 70;
   static const double h90 = 90;
@@ -27,8 +28,12 @@ class WidthValue {
   static const double w0_2 = .2;
   static const double w0_7 = .7;
   static const double w10 = 10;
+  static const double w20 = 20;
   static const double w28_83 = 28.83;
+  static const double w30 = 30;
+  static const double w39 = 39;
   static const double w40 = 40;
+  static const double w50 = 50;
   static const double w106 = 106;
   static const double w157 = 157;
   static const double w198_2 = 198.2;
@@ -37,6 +42,7 @@ class WidthValue {
 }
 
 class RadiusValue {
+  static const double r9 = 9;
   static const double r40 = 40;
   static const double r27_03 = 27.03;
 }

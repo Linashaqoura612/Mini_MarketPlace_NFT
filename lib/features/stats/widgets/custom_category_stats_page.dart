@@ -29,7 +29,7 @@ class CustomCategoryStatsPage extends StatelessWidget {
           Text(
             title,
             style: TextStyle(
-                fontSize: 12,
+                fontSize: FontSize.fs12,
                 fontWeight: FontWeight.bold,
                 fontFamily: FontManager.sfProDisplay),
           ),

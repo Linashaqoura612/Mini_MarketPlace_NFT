@@ -11,4 +11,6 @@ class StringsManager {
   static const String StatsTitle = 'Stats';
   static const String ranking = 'Ranking';
   static const String activity = 'Activity';
+  static const String allCategory = 'All Category';
+  static const String allChains = 'All Chains';
 }
