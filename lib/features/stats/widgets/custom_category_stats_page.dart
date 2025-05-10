@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mini_nft_marketplace/core/resources/size_manager.dart';
 
 import '../../../core/resources/color_manager.dart';
 import '../../../core/resources/font_manager.dart';
@@ -11,12 +12,13 @@ class CustomCategoryStatsPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
+      padding: EdgeInsetsDirectional.symmetric(vertical: PaddingValue.p10,horizontal: PaddingValue.p25),
       alignment: Alignment.center,
-      height: 39,
-      width: 147,
+      // height: HeightValue.h39,
+      // width: WidthValue.w147,
       decoration: BoxDecoration(
         color: ColorManager.kColorPurple.withOpacity(.12),
-        borderRadius: BorderRadius.circular(20),
+        borderRadius: BorderRadius.circular(50),
         border: Border.all(color: ColorManager.kColorPurple),
       ),
       child: Row(
@@ -25,7 +27,7 @@ class CustomCategoryStatsPage extends StatelessWidget {
           Icon(
             icon,
             color: Colors.grey,
-          ),
+          ),SizedBox(width: WidthValue.w2,),
           Text(
             title,
             style: TextStyle(

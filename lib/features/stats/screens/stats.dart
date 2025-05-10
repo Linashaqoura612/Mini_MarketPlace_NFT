@@ -11,6 +11,7 @@ import 'package:mini_nft_marketplace/features/stats/widgets/custom_category_stat
 import 'package:mini_nft_marketplace/features/stats/widgets/custom_title_state_page.dart';
 
 import '../../../core/resources/asset_image_manager.dart';
+import '../../../core/resources/route_manager.dart';
 import '../../../models/table_row_state_model.dart';
 import '../widgets/Custom_table_row_stat_page.dart';
 
@@ -20,17 +21,18 @@ class Stats extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     double listHeight = MediaQuery.of(context).size.height - 250;
+    print(listHeight);
     return SingleChildScrollView(
       child: Column(
         children: [
-          SizedBox(
+          const SizedBox(
             height: HeightValue.h20,
           ),
-          CustomTitleStatePage(),
-          SizedBox(
+          const CustomTitleStatePage(),
+          const SizedBox(
             height: HeightValue.h27,
           ),
-          Row(
+          const Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               CustomCategoryStatsPage(
@@ -38,7 +40,7 @@ class Stats extends StatelessWidget {
                 title: StringsManager.allCategory,
               ),
               SizedBox(
-                width: WidthValue.w50,
+                width: WidthValue.w20,
               ),
               CustomCategoryStatsPage(
                 icon: CupertinoIcons.link,
@@ -50,41 +52,36 @@ class Stats extends StatelessWidget {
             height: 20,
           ),
           Padding(
-            padding: const EdgeInsets.symmetric(horizontal: PaddingValue.p25),
+            padding: const EdgeInsets.symmetric(horizontal: PaddingValue.p9),
             child: ClipRRect(
               borderRadius: BorderRadius.circular(20),
               child: BackdropFilter(
                 filter: ImageFilter.blur(
                     sigmaX: BlurValue.b10, sigmaY: BlurValue.b10),
                 child: Container(
-                  decoration: BoxDecoration(
-                    color: ColorManager.kColorWhite.withOpacity(0.1),
-                    border: Border.all(
-                      color: ColorManager.kColorDarkPurple.withOpacity(.6),
+                  color: ColorManager.kColorWhite.withOpacity(.1),
+                  child: ListView.separated(
+                    physics: NeverScrollableScrollPhysics(),
+                    shrinkWrap: true,
+                    itemCount: 10,
+                    itemBuilder: (context, index) => CustomTableRowStatPage(
+                      tableRowModel: TableRowModel(
+                          index + 1,
+                          index%2==0?AssetImageManager.categoryVirtualHomePage:AssetImageManager.trendingHomePage3,
+                          "name $index",
+                          "subName $index",
+                          "${index * 10}",
+                          "present",
+                          index%3==0?true:false),
+                    ),
+                    separatorBuilder: (context, index) => SizedBox(
+                      height: 40,
                     ),
                   ),
-                  child: ListView.separated(
-                      physics: const NeverScrollableScrollPhysics(),
-                      shrinkWrap: true,
-                      itemBuilder: (context, index) => CustomTableRowStatPage(
-                          tableRowModel: TableRowModel(
-                              index + 1,
-                              index % 2 == 0
-                                  ? AssetImageManager.categoryVirtualHomePage
-                                  : AssetImageManager.topSellerHomePage2,
-                              "name $index",
-                              "subName  $index",
-                              "${index * 10}",
-                              "present",
-                              index % 3 == 0 ? true : false)),
-                      separatorBuilder: (context, index) => SizedBox(
-                            height: HeightValue.h9,
-                          ),
-                      itemCount: 20),
                 ),
               ),
             ),
-          ),
+          )
         ],
       ),
     );

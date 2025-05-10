@@ -12,6 +12,7 @@ class HeightValue {
   static const double h122 = 122;
   static const double h139 = 139;
   static const double h167_57 = 167.57;
+  static const double h174= 167.57;
   static const double h191 = 191;
   static const double h194 = 194;
   static const double h236 = 236;
@@ -26,8 +27,10 @@ class BlurValue {
 
 class WidthValue {
   static const double w0_2 = .2;
+  static const double w2 = 2;
   static const double w0_7 = .7;
   static const double w10 = 10;
+  static const double w13 = 13;
   static const double w20 = 20;
   static const double w28_83 = 28.83;
   static const double w30 = 30;
@@ -35,6 +38,8 @@ class WidthValue {
   static const double w40 = 40;
   static const double w50 = 50;
   static const double w106 = 106;
+  static const double w115 = 115;
+  static const double w147 = 147;
   static const double w157 = 157;
   static const double w198_2 = 198.2;
   static const double w252_26 = 252.26;
